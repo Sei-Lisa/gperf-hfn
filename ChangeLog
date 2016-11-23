@@ -1,3 +1,16 @@
+2016-11-24  Sei Lisa  <sei-lisal@github>
+
+	Implement HFN output.
+	* src/options.cc, src/options.h: Add HFN as an output language option.
+	* src/version.h: Add ALG_VERSION.
+	* src/output.cc (Output::output): Use HFN option to output hash
+	function in text form, including the ALG_VERSION.
+	* tests/Makefile.in (check-test): Run tests for HFN.
+	* tests/test-6.exp: Update to reflect changes in help text.
+	* tests/permutc2.*: Note greater alpha_inc with -k1,$.
+	* tests/*-hfn*.exp: New files, expected results for the new tests.
+	* doc/gperf.texi: Document the changes.
+
 2009-02-01  Brendan Kehoe  <brendan@zen.org>
 
 	* gperf-3.0.4 released.

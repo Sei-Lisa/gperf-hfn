@@ -119,8 +119,8 @@ Options::long_usage (FILE * stream)
   fprintf (stream,
            "  -L, --language=LANGUAGE-NAME\n"
            "                         Generates code in the specified language. Languages\n"
-           "                         handled are currently C++, ANSI-C, C, and KR-C. The\n"
-           "                         default is C.\n");
+           "                         handled are currently C++, ANSI-C, C, KR-C, and HFN.\n"
+           "                         The default is C.\n");
   fprintf (stream, "\n");
   fprintf (stream,
            "Details in the output code:\n");
@@ -483,6 +483,7 @@ Options::~Options ()
                "\nC is...........: %s"
                "\nANSIC is.......: %s"
                "\nCPLUSPLUS is...: %s"
+               "\nHFN is.........: %s"
                "\nSEVENBIT is....: %s"
                "\nLENTABLE is....: %s"
                "\nCOMP is........: %s"
@@ -517,6 +518,7 @@ Options::~Options ()
                _option_word & C ? "enabled" : "disabled",
                _option_word & ANSIC ? "enabled" : "disabled",
                _option_word & CPLUSPLUS ? "enabled" : "disabled",
+               _option_word & HFN ? "enabled" : "disabled",
                _option_word & SEVENBIT ? "enabled" : "disabled",
                _option_word & LENTABLE ? "enabled" : "disabled",
                _option_word & COMP ? "enabled" : "disabled",
@@ -563,7 +565,7 @@ Options::set_language (const char *language)
   if (_language == NULL)
     {
       _language = language;
-      _option_word &= ~(KRC | C | ANSIC | CPLUSPLUS);
+      _option_word &= ~(KRC | C | ANSIC | CPLUSPLUS | HFN);
       if (!strcmp (language, "KR-C"))
         _option_word |= KRC;
       else if (!strcmp (language, "C"))
@@ -572,6 +574,8 @@ Options::set_language (const char *language)
         _option_word |= ANSIC;
       else if (!strcmp (language, "C++"))
         _option_word |= CPLUSPLUS;
+      else if (!strcmp (language, "HFN"))
+        _option_word |= HFN;
       else
         {
           fprintf (stderr, "unsupported language option %s, defaulting to C\n",

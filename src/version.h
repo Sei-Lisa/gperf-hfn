@@ -21,3 +21,6 @@
 
 /* Current release version. */
 extern const char *version_string;
+
+/* Current algorithm version (for HFN output).  */
+#define ALG_VERSION 1

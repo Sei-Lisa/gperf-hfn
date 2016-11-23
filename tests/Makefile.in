@@ -167,6 +167,30 @@ check-test:
 	diff $(srcdir)/languages.exp languages.out
 	$(GPERF) -t < $(srcdir)/incomplete.gperf | $(POSTPROCESS_FOR_MINGW) > incomplete.out
 	diff $(srcdir)/incomplete.exp incomplete.out
+	$(GPERF) -L HFN -k1,2 -m5 $(srcdir)/permut2.gperf | $(POSTPROCESS_FOR_MINGW) > permut2-hfn.out
+	diff $(srcdir)/permut2-hfn.exp permut2-hfn.out
+	$(GPERF) -L HFN -k1,'$$' -m5 $(srcdir)/permut2.gperf | $(POSTPROCESS_FOR_MINGW) > permut2-hfn2.out
+	diff $(srcdir)/permut2-hfn2.exp permut2-hfn2.out
+	$(GPERF) -L HFN $(srcdir)/permut2.gperf | $(POSTPROCESS_FOR_MINGW) > permut2-hfn3.out
+	diff $(srcdir)/permut2-hfn3.exp permut2-hfn3.out
+	$(GPERF) -L HFN $(srcdir)/permut3.gperf | $(POSTPROCESS_FOR_MINGW) > permut3-hfn.out
+	diff $(srcdir)/permut3-hfn.exp permut3-hfn.out
+	$(GPERF) -L HFN $(srcdir)/permutc2.gperf | $(POSTPROCESS_FOR_MINGW) > permutc2-hfn.out
+	diff $(srcdir)/permutc2-hfn.exp permutc2-hfn.out
+	$(GPERF) -L HFN --ignore-case $(srcdir)/permutc2.gperf | $(POSTPROCESS_FOR_MINGW) > permutc2-hfn2.out
+	diff $(srcdir)/permutc2-hfn2.exp permutc2-hfn2.out
+	$(GPERF) -L HFN --ignore-case -k 1,'$$' $(srcdir)/permutc2.gperf | $(POSTPROCESS_FOR_MINGW) > permutc2-hfn3.out
+	diff $(srcdir)/permutc2-hfn3.exp permutc2-hfn3.out
+	$(GPERF) -L HFN $(srcdir)/ada.gperf | $(POSTPROCESS_FOR_MINGW) > ada-hfn.out
+	diff $(srcdir)/ada-hfn.exp ada-hfn.out
+	$(GPERF) -L HFN $(srcdir)/adadefs.gperf | $(POSTPROCESS_FOR_MINGW) > adadefs-hfn.out
+	diff $(srcdir)/adadefs-hfn.exp adadefs-hfn.out
+	$(GPERF) -L HFN $(srcdir)/modula2.gperf | $(POSTPROCESS_FOR_MINGW) > modula2-hfn.out
+	diff $(srcdir)/modula2-hfn.exp modula2-hfn.out
+	$(GPERF) -L HFN $(srcdir)/modula3.gperf | $(POSTPROCESS_FOR_MINGW) > modula3-hfn.out
+	diff $(srcdir)/modula3-hfn.exp modula3-hfn.out
+	$(GPERF) -L HFN $(srcdir)/pascal.gperf | $(POSTPROCESS_FOR_MINGW) > pascal-hfn.out
+	diff $(srcdir)/pascal-hfn.exp pascal-hfn.out
 # prints out the help message
 	-$(GPERF) -h | $(POSTPROCESS_FOR_MINGW) > test-6.out
 	diff $(srcdir)/test-6.exp test-6.out
