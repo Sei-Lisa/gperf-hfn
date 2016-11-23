@@ -2035,6 +2035,57 @@ Output::output ()
 {
   compute_min_max ();
 
+  if (option[HFN])
+    {
+      int i;
+      int npos = _key_positions.get_size ();
+
+      /* Just output the function data.  */
+      printf ("gperf hash function\nalg: %d\nsize: %d\ntable: ",
+              ALG_VERSION, _max_hash_value + 1);
+      for (i = 0; i < _alpha_size; i++)
+        {
+          if (i)
+            printf (",");
+          printf ("%d", _asso_values[i]);
+        }
+      printf ("\nkeys: ");
+      i = npos - 1;
+      if (i >= 0 && _key_positions[i] == Positions::LASTCHAR)
+        i--;
+      for (; i >= 0; i--)
+        {
+          printf ("%d", _key_positions[i]);
+          if (i)
+            printf (",");
+        }
+      if (npos > 0 && _key_positions[npos - 1] == Positions::LASTCHAR)
+        {
+          if (npos > 1)
+            printf (",");
+          printf ("$");
+        }
+      printf ("\nincs: ");
+      i = npos - 1;
+      if (i >= 0 && _key_positions[i] == Positions::LASTCHAR)
+        i--;
+      for (; i >= 0; i--)
+        {
+          printf ("%u", _alpha_inc[_key_positions[i]]);
+          if (i)
+            printf (",");
+        }
+      if (npos > 0 && _key_positions[npos - 1] == Positions::LASTCHAR)
+        {
+          if (npos > 1)
+            printf (",");
+          printf ("0");
+        }
+      printf ("\naddlen: %s\n", _hash_includes_len ? "y" : "n");
+      fflush(stdout);
+      return;
+    }
+
   if (option[CPLUSPLUS])
     /* The 'register' keyword is removed from C++17.
        See http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4340  */

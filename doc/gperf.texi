@@ -502,6 +502,11 @@ ISO C99 compilers, and C++ compilers.
 
 @item C++
 C++.  This language is understood by C++ compilers.
+
+@item HFN
+This is not actually a language. It outputs the hash function parameters
+in a stable, machine-friendly format, suitable for creating interpreters
+or compilers for other languages.
 @end table
 
 The default is ANSI-C.
@@ -1052,6 +1057,11 @@ ANSI C.  This language is understood by ANSI C compilers and C++ compilers.
 
 @item C++
 C++.  This language is understood by C++ compilers.
+
+@item HFN
+This is not actually a language. It outputs the hash function parameters
+in a stable, machine-friendly format, suitable for creating interpreters
+or compilers for other languages.
 @end table
 
 The default is ANSI-C.
