@@ -3,7 +3,7 @@
 # Copyright (C) 2003 Free Software Foundation, Inc.
 # Written by Bruno Haible <bruno@clisp.org>.
 #
-# This file is part of GNU GPERF.
+# This file is part of GPERF-HFN.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ docdir = $(datadir).doc.gperf
 CC = cc
 CXX = cxx
 
-# These flags affect binary compatibility. GNU gperf does not need them,
+# These flags affect binary compatibility. gperf-HFN does not need them,
 # but other packages do.
 ABIFLAGS = /name=(as_is,short) /float=ieee
 

@@ -1,4 +1,4 @@
-This is GNU gperf. It is a program that generates perfect hash
+This is gperf-HFN. It is a program that generates perfect hash
 functions for sets of key words.  A perfect hash function is:
 
           A hash function and a data structure that allows 
@@ -13,16 +13,16 @@ See the file NEWS for a list of major changes in the current release.
 
 See the file INSTALL for compilation and installation instructions.
 
-Output from the GPERF program is used to recognize reserved words in
-the GNU C, GNU C++, and GNU Pascal compilers, as well as with the GNU
-indent program.
+Output from the original GNU GPERF program is used to recognize
+reserved words in the GNU C, GNU C++, and GNU Pascal compilers, as
+well as with the GNU indent program.
 
 For general documentation on the coding and usage standards
 this distribution follows, see the GNU standards document
 ftp://ftp.gnu.org/pub/gnu/standards.*, especially the 'Makefile
 Conventions', 'Configuration', and 'User Interfaces' sections.
 
-Mail suggestions and bug reports to <bug-gnu-gperf@gnu.org>.  When
+Mail suggestions and bug reports to <seilisasl@gmail.com>.  When
 reporting bugs, please include in the subject line the package name
 and version (output of 'gperf --version') for which you found a problem.
 

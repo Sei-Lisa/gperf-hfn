@@ -1,3 +1,8 @@
+New in 3.0.4hfn.1:
+
+* Forked from GNU gperf 3.0.4 as gperf-HFN by Sei Lisa on 2016-11-24.
+* Added HFN as a "language", to output the Hash FuNction parameters alone.
+
 New in 3.0.4:
 
 * gperf is now licensed under the GPL version 3 or newer.

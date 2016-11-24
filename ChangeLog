@@ -1,3 +1,16 @@
+2016-11-24  Sei Lisa  <sei-lisa@github>
+
+	Fork GNU gperf as gperf-HFN.
+	* */*: Rename to GPERF-HFN to avoid confusion with the GNU project's
+	gperf; change the email for bug reports.
+	* src/options.cc: Make it clear on --version that it's a fork of
+	GNU gperf.
+	* src/version.cc: Bump to 3.0.4hfn.1.
+	* doc/gperf.texi: Document the new option; other fork-related changes.
+	* tests/*.exp: Bump to 3.0.4hfn.1 in header.
+	* NEWS: Mention the changes.
+	* AUTHORS: Add Sei Lisa.
+
 2016-11-24  Sei Lisa  <sei-lisal@github>
 
 	Implement HFN output.

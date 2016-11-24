@@ -17,9 +17,9 @@
 
 @c some day we should @include version.texi instead of defining
 @c these values at hand.
-@set UPDATED 1 February 2009
-@set EDITION 3.0.4
-@set VERSION 3.0.4
+@set UPDATED 24 November 2016
+@set EDITION 3.0.4hfn.1
+@set VERSION 3.0.4hfn.1
 @c ---------------------
 
 @c remove the black boxes generated in the GPL appendix.
@@ -37,10 +37,12 @@
 @end ifinfo
 
 @ifinfo
-This file documents the features of the GNU Perfect Hash Function
+This file documents the features of the Perfect Hash Function
 Generator @value{VERSION}.
 
 Copyright @copyright{} 1989-2009 Free Software Foundation, Inc.
+@*
+Copyright @copyright{} 2016 Sei Lisa.
 
 Permission is granted to make and distribute verbatim copies of this
 manual provided the copyright notice and this permission notice are
@@ -71,14 +73,17 @@ Software Foundation instead of in the original English.
 
 @titlepage
 @title User's Guide to @code{gperf} @value{VERSION}
-@subtitle The GNU Perfect Hash Function Generator
+@subtitle The Perfect Hash Function Generator
 @subtitle Edition @value{EDITION}, @value{UPDATED}
 @author Douglas C. Schmidt
 @author Bruno Haible
+@author Sei Lisa
 
 @page
 @vskip 0pt plus 1filll
 Copyright @copyright{} 1989-2009 Free Software Foundation, Inc.
+@*
+Copyright @copyright{} 2016 Sei Lisa.
 
 
 Permission is granted to make and distribute verbatim copies of
@@ -108,7 +113,7 @@ original English.
 @node Top, Copying, (dir), (dir)
 @top Introduction
 
-This manual documents the GNU @code{gperf} perfect hash function generator
+This manual documents the @code{gperf-HFN} perfect hash function generator
 utility, focusing on its features and how to use them, and how to report
 bugs.
 
@@ -117,7 +122,7 @@ bugs.
                                 copy and share @code{gperf}.
 * Contributors::                People who have contributed to @code{gperf}.
 * Motivation::                  The purpose of @code{gperf}.
-* Search Structures::           Static search structures and GNU @code{gperf}
+* Search Structures::           Static search structures and @code{gperf-HFN}
 * Description::                 High-level discussion of how GPERF functions.
 * Options::                     A description of options to the program.
 * Bugs::                        Known bugs and limitations with GPERF.
@@ -128,7 +133,7 @@ bugs.
 
 @detailmenu --- The Detailed Node Listing ---
 
-High-Level Description of GNU @code{gperf}
+High-Level Description of @code{gperf-HFN}
 
 * Input Format::                Input Format to @code{gperf}
 * Output Format::               Output Format for Generated C Code with @code{gperf}
@@ -166,7 +171,7 @@ Invoking @code{gperf}
 @include gpl-3.0.texi
 
 @node Contributors, Motivation, Copying, Top
-@unnumbered Contributors to GNU @code{gperf} Utility
+@unnumbered Contributors to @code{gperf-HFN} Utility
 
 @itemize @bullet
 @item
@@ -177,8 +182,9 @@ idea for the perfect hash function generator was inspired by Keith
 Bostic's algorithm written in C, and distributed to net.sources around
 1984.  The current program is a heavily modified, enhanced, and extended
 implementation of Keith's basic idea, created at the University of
-California, Irvine.  Bugs, patches, and suggestions should be reported
-to @code{<bug-gnu-gperf@@gnu.org>}.
+California, Irvine.  The program was forked and modified by Sei Lisa.
+Bugs, patches, and suggestions should be reported to
+@code{<seilisasl@@gmail.com>}.
 
 @item
 Special thanks is extended to Michael Tiemann and Doug Lea, for
@@ -192,6 +198,11 @@ that greatly helped improve the quality and functionality of @code{gperf}.
 Bruno Haible enhanced and optimized the search algorithm.  He also rewrote
 the input routines and the output routines for better reliability, and
 added a testsuite.
+
+@item
+Sei Lisa forked GNU gperf as gperf-HFN to add output of the hash function
+in a machine-readable form, to enable creation of hash function compilers
+for other languages.
 @end itemize
 
 @node Motivation, Search Structures, Contributors, Top
@@ -211,13 +222,13 @@ the lookup table.
 lexical analyzers in several production and research compilers and
 language processing tools, including GNU C, GNU C++, GNU Java, GNU Pascal,
 GNU Modula 3, and GNU indent.  Complete C++ source code for @code{gperf} is
-available from @code{http://ftp.gnu.org/pub/gnu/gperf/}.
+available from @code{https://github.com/Sei-Lisa/gperf-hfn}.
 A paper describing @code{gperf}'s design and implementation in greater
 detail is available in the Second USENIX C++ Conference proceedings
 or from @code{http://www.cs.wustl.edu/~schmidt/resume.html}.
 
 @node Search Structures, Description, Motivation, Top
-@chapter Static search structures and GNU @code{gperf}
+@chapter Static search structures and @code{gperf-HFN}
 @cindex Static search structure
 
 A @dfn{static search structure} is an Abstract Data Type with certain
@@ -277,15 +288,16 @@ effort building an optimal search structure @emph{once}, if it
 subsequently receives heavy use multiple times.  @code{gperf} removes
 the drudgery associated with constructing time- and space-efficient
 search structures by hand.  It has proven a useful and practical tool
-for serious programming projects.  Output from @code{gperf} is currently
-used in several production and research compilers, including GNU C, GNU
-C++, GNU Java, GNU Pascal, and GNU Modula 3.  The latter two compilers are
-not yet part of the official GNU distribution.  Each compiler utilizes
-@code{gperf} to automatically generate static search structures that
-efficiently identify their respective reserved keywords.
+for serious programming projects.  Output from GNU @code{gperf} (not
+from the gperf-HFN fork) is currently used in several production and
+research compilers, including GNU C, GNU C++, GNU Java, GNU Pascal, and
+GNU Modula 3.  The latter two compilers are not yet part of the official
+GNU distribution.  Each compiler utilizes @code{gperf} to automatically
+generate static search structures that efficiently identify their
+respective reserved keywords.
 
 @node Description, Options, Search Structures, Top
-@chapter High-Level Description of GNU @code{gperf}
+@chapter High-Level Description of @code{gperf-HFN}
 
 @menu
 * Input Format::                Input Format to @code{gperf}

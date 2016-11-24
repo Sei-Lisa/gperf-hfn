@@ -1,4 +1,4 @@
-GNU 'gperf' generates perfect hash functions.
+'gperf-HFN' generates perfect hash functions.
 
 Usage: ../src/gperf [OPTION]... [INPUT-FILE]
 
@@ -135,4 +135,4 @@ Informative output:
   -d, --debug            Enables the debugging option (produces verbose
                          output to the standard error).
 
-Report bugs to <bug-gnu-gperf@gnu.org>.
+Report bugs to <seilisasl@gmail.com>.

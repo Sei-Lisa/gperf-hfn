@@ -1,9 +1,11 @@
 /* Handles parsing the Options provided to the user.
    Copyright (C) 1989-1998, 2000, 2002-2004, 2006-2009 Free Software Foundation, Inc.
-   Written by Douglas C. Schmidt <schmidt@ics.uci.edu>
-   and Bruno Haible <bruno@clisp.org>.
+   Copyright (C) 2016 Sei Lisa.
+   Written by Douglas C. Schmidt <schmidt@ics.uci.edu>,
+   Bruno Haible <bruno@clisp.org>
+   and Sei Lisa.
 
-   This file is part of GNU GPERF.
+   This file is part of GPERF-HFN.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -78,7 +80,7 @@ void
 Options::long_usage (FILE * stream)
 {
   fprintf (stream,
-           "GNU 'gperf' generates perfect hash functions.\n");
+           "'gperf-HFN' generates perfect hash functions.\n");
   fprintf (stream, "\n");
   fprintf (stream,
            "Usage: %s [OPTION]... [INPUT-FILE]\n",
@@ -260,7 +262,7 @@ Options::long_usage (FILE * stream)
            "                         output to the standard error).\n");
   fprintf (stream, "\n");
   fprintf (stream,
-           "Report bugs to <bug-gnu-gperf@gnu.org>.\n");
+           "Report bugs to <seilisasl@gmail.com>.\n");
 }
 
 /* Prints the given options.  */
@@ -1002,15 +1004,18 @@ Options::parse_options (int argc, char *argv[])
             break;
           }
         case 'v':               /* Print out the version and quit.  */
-          fprintf (stdout, "GNU gperf %s\n", version_string);
+          fprintf (stdout, "gperf-HFN %s\n", version_string);
           fprintf (stdout, "Copyright (C) %s Free Software Foundation, Inc.\n\
+Copyright (C) %s Sei Lisa.\n\
+gperf-HFN is a fork of GNU gperf created by Sei Lisa on 2016-11-24.\n\
+\n\
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
 This is free software: you are free to change and redistribute it.\n\
 There is NO WARRANTY, to the extent permitted by law.\n\
 ",
-                   "1989-1998, 2000-2004, 2006-2009");
-          fprintf (stdout, "Written by %s and %s.\n",
-                   "Douglas C. Schmidt", "Bruno Haible");
+                   "1989-1998, 2000-2004, 2006-2009", "2016");
+          fprintf (stdout, "Written by %s, %s and %s.\n",
+                   "Douglas C. Schmidt", "Bruno Haible", "Sei Lisa");
           exit (0);
         case 'W':               /* Sets the name for the hash table array.  */
           {
