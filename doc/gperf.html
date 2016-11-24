@@ -1,26 +1,27 @@
 <HTML>
 <HEAD>
 <!-- This HTML file has been created by texi2html 1.52b
-     from gperf.texi on 1 February 2009 -->
+     from gperf.texi on 24 November 2016 -->
 
 <META HTTP-EQUIV="content-type" CONTENT="text/html; charset=UTF-8">
 <TITLE>Perfect Hash Function Generator</TITLE>
 </HEAD>
 <BODY>
-<H1>User's Guide to <CODE>gperf</CODE> 3.0.4</H1>
-<H2>The GNU Perfect Hash Function Generator</H2>
-<H2>Edition 3.0.4, 1 February 2009</H2>
+<H1>User's Guide to <CODE>gperf</CODE> 3.0.4hfn.1</H1>
+<H2>The Perfect Hash Function Generator</H2>
+<H2>Edition 3.0.4hfn.1, 24 November 2016</H2>
 <ADDRESS>Douglas C. Schmidt</ADDRESS>
 <ADDRESS>Bruno Haible</ADDRESS>
+<ADDRESS>Sei Lisa</ADDRESS>
 <P>
 <P><HR><P>
 <H1>Table of Contents</H1>
 <UL>
 <LI><A NAME="TOC1" HREF="gperf.html#SEC1">GNU GENERAL PUBLIC LICENSE</A>
-<LI><A NAME="TOC2" HREF="gperf.html#SEC2">Contributors to GNU <CODE>gperf</CODE> Utility</A>
+<LI><A NAME="TOC2" HREF="gperf.html#SEC2">Contributors to <CODE>gperf-HFN</CODE> Utility</A>
 <LI><A NAME="TOC3" HREF="gperf.html#SEC3">2  Introduction</A>
-<LI><A NAME="TOC4" HREF="gperf.html#SEC4">3  Static search structures and GNU <CODE>gperf</CODE></A>
-<LI><A NAME="TOC5" HREF="gperf.html#SEC5">4  High-Level Description of GNU <CODE>gperf</CODE></A>
+<LI><A NAME="TOC4" HREF="gperf.html#SEC4">3  Static search structures and <CODE>gperf-HFN</CODE></A>
+<LI><A NAME="TOC5" HREF="gperf.html#SEC5">4  High-Level Description of <CODE>gperf-HFN</CODE></A>
 <UL>
 <LI><A NAME="TOC6" HREF="gperf.html#SEC6">4.1  Input Format to <CODE>gperf</CODE></A>
 <UL>
@@ -56,6 +57,8 @@
 
 <P>
 Copyright (C) 1989-2009 Free Software Foundation, Inc.
+<BR>
+Copyright (C) 2016 Sei Lisa.
 
 </P>
 
@@ -865,7 +868,7 @@ first, please read <A HREF="http://www.gnu.org/philosophy/why-not-lgpl.html">htt
 </P>
 
 
-<H1><A NAME="SEC2" HREF="gperf.html#TOC2">Contributors to GNU <CODE>gperf</CODE> Utility</A></H1>
+<H1><A NAME="SEC2" HREF="gperf.html#TOC2">Contributors to <CODE>gperf-HFN</CODE> Utility</A></H1>
 
 
 <UL>
@@ -878,8 +881,9 @@ idea for the perfect hash function generator was inspired by Keith
 Bostic's algorithm written in C, and distributed to net.sources around
 1984.  The current program is a heavily modified, enhanced, and extended
 implementation of Keith's basic idea, created at the University of
-California, Irvine.  Bugs, patches, and suggestions should be reported
-to <CODE>&#60;bug-gnu-gperf@gnu.org&#62;</CODE>.
+California, Irvine.  The program was forked and modified by Sei Lisa.
+Bugs, patches, and suggestions should be reported to
+<CODE>&#60;seilisasl@gmail.com&#62;</CODE>.
 
 <LI>
 
@@ -895,6 +899,12 @@ that greatly helped improve the quality and functionality of <CODE>gperf</CODE>.
 Bruno Haible enhanced and optimized the search algorithm.  He also rewrote
 the input routines and the output routines for better reliability, and
 added a testsuite.
+
+<LI>
+
+Sei Lisa forked GNU gperf as gperf-HFN to add output of the hash function
+in a machine-readable form, to enable creation of hash function compilers
+for other languages.
 </UL>
 
 
@@ -918,7 +928,7 @@ the lookup table.
 lexical analyzers in several production and research compilers and
 language processing tools, including GNU C, GNU C++, GNU Java, GNU Pascal,
 GNU Modula 3, and GNU indent.  Complete C++ source code for <CODE>gperf</CODE> is
-available from <CODE>http://ftp.gnu.org/pub/gnu/gperf/</CODE>.
+available from <CODE>https://github.com/Sei-Lisa/gperf-hfn</CODE>.
 A paper describing <CODE>gperf</CODE>'s design and implementation in greater
 detail is available in the Second USENIX C++ Conference proceedings
 or from <CODE>http://www.cs.wustl.edu/~schmidt/resume.html</CODE>.
@@ -926,7 +936,7 @@ or from <CODE>http://www.cs.wustl.edu/~schmidt/resume.html</CODE>.
 </P>
 
 
-<H1><A NAME="SEC4" HREF="gperf.html#TOC4">3  Static search structures and GNU <CODE>gperf</CODE></A></H1>
+<H1><A NAME="SEC4" HREF="gperf.html#TOC4">3  Static search structures and <CODE>gperf-HFN</CODE></A></H1>
 <P>
 <A NAME="IDX2"></A>
 
@@ -1000,17 +1010,18 @@ effort building an optimal search structure <EM>once</EM>, if it
 subsequently receives heavy use multiple times.  <CODE>gperf</CODE> removes
 the drudgery associated with constructing time- and space-efficient
 search structures by hand.  It has proven a useful and practical tool
-for serious programming projects.  Output from <CODE>gperf</CODE> is currently
-used in several production and research compilers, including GNU C, GNU
-C++, GNU Java, GNU Pascal, and GNU Modula 3.  The latter two compilers are
-not yet part of the official GNU distribution.  Each compiler utilizes
-<CODE>gperf</CODE> to automatically generate static search structures that
-efficiently identify their respective reserved keywords.
+for serious programming projects.  Output from GNU <CODE>gperf</CODE> (not
+from the gperf-HFN fork) is currently used in several production and
+research compilers, including GNU C, GNU C++, GNU Java, GNU Pascal, and
+GNU Modula 3.  The latter two compilers are not yet part of the official
+GNU distribution.  Each compiler utilizes <CODE>gperf</CODE> to automatically
+generate static search structures that efficiently identify their
+respective reserved keywords.
 
 </P>
 
 
-<H1><A NAME="SEC5" HREF="gperf.html#TOC5">4  High-Level Description of GNU <CODE>gperf</CODE></A></H1>
+<H1><A NAME="SEC5" HREF="gperf.html#TOC5">4  High-Level Description of <CODE>gperf-HFN</CODE></A></H1>
 
 <P>
 The perfect hash function generator <CODE>gperf</CODE> reads a set of
@@ -1249,6 +1260,12 @@ ISO C99 compilers, and C++ compilers.
 <DT><SAMP>&lsquo;C++&rsquo;</SAMP>
 <DD>
 C++.  This language is understood by C++ compilers.
+
+<DT><SAMP>&lsquo;HFN&rsquo;</SAMP>
+<DD>
+This is not actually a language. It outputs the hash function parameters
+in a stable, machine-friendly format, suitable for creating interpreters
+or compilers for other languages.
 </DL>
 
 The default is C.
@@ -1826,6 +1843,12 @@ ANSI C.  This language is understood by ANSI C compilers and C++ compilers.
 <DT><SAMP>&lsquo;C++&rsquo;</SAMP>
 <DD>
 C++.  This language is understood by C++ compilers.
+
+<DT><SAMP>&lsquo;HFN&rsquo;</SAMP>
+<DD>
+This is not actually a language. It outputs the hash function parameters
+in a stable, machine-friendly format, suitable for creating interpreters
+or compilers for other languages.
 </DL>
 
 The default is C.
@@ -2475,7 +2498,7 @@ Jump to:
 </P>
 
 <P><HR><P>
-This document was generated on 1 February 2009 using the
+This document was generated on 24 November 2016 using the
 <A HREF="http://wwwinfo.cern.ch/dis/texi2html/">texi2html</A>
 translator version 1.52b.</P>
 </BODY>

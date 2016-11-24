@@ -5,10 +5,11 @@ START-INFO-DIR-ENTRY
 * Gperf: (gperf).                Perfect Hash Function Generator.
 END-INFO-DIR-ENTRY
 
-   This file documents the features of the GNU Perfect Hash Function
-Generator 3.0.4.
+   This file documents the features of the Perfect Hash Function
+Generator 3.0.4hfn.1.
 
    Copyright (C) 1989-2009 Free Software Foundation, Inc.
+Copyright (C) 2016 Sei Lisa.
 
    Permission is granted to make and distribute verbatim copies of this
 manual provided the copyright notice and this permission notice are
@@ -33,7 +34,7 @@ File: gperf.info,  Node: Top,  Next: Copying,  Prev: (dir),  Up: (dir)
 Introduction
 ************
 
-   This manual documents the GNU `gperf' perfect hash function generator
+   This manual documents the `gperf-HFN' perfect hash function generator
 utility, focusing on its features and how to use them, and how to report
 bugs.
 
@@ -43,7 +44,7 @@ bugs.
                                 copy and share `gperf'.
 * Contributors::                People who have contributed to `gperf'.
 * Motivation::                  The purpose of `gperf'.
-* Search Structures::           Static search structures and GNU `gperf'
+* Search Structures::           Static search structures and `gperf-HFN'
 * Description::                 High-level discussion of how GPERF functions.
 * Options::                     A description of options to the program.
 * Bugs::                        Known bugs and limitations with GPERF.
@@ -53,7 +54,7 @@ bugs.
 * Concept Index::
 
 
-High-Level Description of GNU `gperf'
+High-Level Description of `gperf-HFN'
 
 * Input Format::                Input Format to `gperf'
 * Output Format::               Output Format for Generated C Code with `gperf'
@@ -807,7 +808,7 @@ please read `http://www.gnu.org/philosophy/why-not-lgpl.html'.
 
 File: gperf.info,  Node: Contributors,  Next: Motivation,  Prev: Copying,  Up: Top
 
-Contributors to GNU `gperf' Utility
+Contributors to `gperf-HFN' Utility
 ***********************************
 
    * The GNU `gperf' perfect hash function generator utility was
@@ -816,8 +817,9 @@ Contributors to GNU `gperf' Utility
      algorithm written in C, and distributed to net.sources around
      1984.  The current program is a heavily modified, enhanced, and
      extended implementation of Keith's basic idea, created at the
-     University of California, Irvine.  Bugs, patches, and suggestions
-     should be reported to `<bug-gnu-gperf@gnu.org>'.
+     University of California, Irvine.  The program was forked and
+     modified by Sei Lisa.  Bugs, patches, and suggestions should be
+     reported to `<seilisasl@gmail.com>'.
 
    * Special thanks is extended to Michael Tiemann and Doug Lea, for
      providing a useful compiler, and for giving me a forum to exhibit
@@ -830,6 +832,10 @@ Contributors to GNU `gperf' Utility
    * Bruno Haible enhanced and optimized the search algorithm.  He also
      rewrote the input routines and the output routines for better
      reliability, and added a testsuite.
+
+   * Sei Lisa forked GNU gperf as gperf-HFN to add output of the hash
+     function in a machine-readable form, to enable creation of hash
+     function compilers for other languages.
 
 
 File: gperf.info,  Node: Motivation,  Next: Search Structures,  Prev: Contributors,  Up: Top
@@ -849,15 +855,15 @@ S occurs in W, using at most one probe into the lookup table.
 lexical analyzers in several production and research compilers and
 language processing tools, including GNU C, GNU C++, GNU Java, GNU
 Pascal, GNU Modula 3, and GNU indent.  Complete C++ source code for
-`gperf' is available from `http://ftp.gnu.org/pub/gnu/gperf/'.  A paper
-describing `gperf''s design and implementation in greater detail is
-available in the Second USENIX C++ Conference proceedings or from
+`gperf' is available from `https://github.com/Sei-Lisa/gperf-hfn'.  A
+paper describing `gperf''s design and implementation in greater detail
+is available in the Second USENIX C++ Conference proceedings or from
 `http://www.cs.wustl.edu/~schmidt/resume.html'.
 
 
 File: gperf.info,  Node: Search Structures,  Next: Description,  Prev: Motivation,  Up: Top
 
-2 Static search structures and GNU `gperf'
+2 Static search structures and `gperf-HFN'
 ******************************************
 
    A "static search structure" is an Abstract Data Type with certain
@@ -913,17 +919,18 @@ effort building an optimal search structure _once_, if it subsequently
 receives heavy use multiple times.  `gperf' removes the drudgery
 associated with constructing time- and space-efficient search
 structures by hand.  It has proven a useful and practical tool for
-serious programming projects.  Output from `gperf' is currently used in
-several production and research compilers, including GNU C, GNU C++,
-GNU Java, GNU Pascal, and GNU Modula 3.  The latter two compilers are
-not yet part of the official GNU distribution.  Each compiler utilizes
-`gperf' to automatically generate static search structures that
-efficiently identify their respective reserved keywords.
+serious programming projects.  Output from GNU `gperf' (not from the
+gperf-HFN fork) is currently used in several production and research
+compilers, including GNU C, GNU C++, GNU Java, GNU Pascal, and GNU
+Modula 3.  The latter two compilers are not yet part of the official
+GNU distribution.  Each compiler utilizes `gperf' to automatically
+generate static search structures that efficiently identify their
+respective reserved keywords.
 
 
 File: gperf.info,  Node: Description,  Next: Options,  Prev: Search Structures,  Up: Top
 
-3 High-Level Description of GNU `gperf'
+3 High-Level Description of `gperf-HFN'
 ***************************************
 
 * Menu:
@@ -1118,6 +1125,11 @@ line option, the command-line option's value prevails.
 
     `C++'
           C++.  This language is understood by C++ compilers.
+
+    `HFN'
+          This is not actually a language. It outputs the hash function
+          parameters in a stable, machine-friendly format, suitable for
+          creating interpreters or compilers for other languages.
 
      The default is C.
 
@@ -1584,6 +1596,11 @@ File: gperf.info,  Node: Output Language,  Next: Output Details,  Prev: Input De
     `C++'
           C++.  This language is understood by C++ compilers.
 
+    `HFN'
+          This is not actually a language. It outputs the hash function
+          parameters in a stable, machine-friendly format, suitable for
+          creating interpreters or compilers for other languages.
+
      The default is C.
 
 `-a'
@@ -2014,29 +2031,29 @@ Concept Index
 
 * %%:                                    User-supplied Struct.
                                                               (line  33)
-* %7bit:                                 Gperf Declarations.  (line  95)
-* %compare-lengths:                      Gperf Declarations.  (line 103)
-* %compare-strncmp:                      Gperf Declarations.  (line 115)
-* %define class-name:                    Gperf Declarations.  (line  89)
-* %define hash-function-name:            Gperf Declarations.  (line  79)
-* %define initializer-suffix:            Gperf Declarations.  (line  71)
-* %define length-table-name:             Gperf Declarations.  (line 173)
-* %define lookup-function-name:          Gperf Declarations.  (line  84)
-* %define slot-name:                     Gperf Declarations.  (line  63)
-* %define string-pool-name:              Gperf Declarations.  (line 152)
-* %define word-array-name:               Gperf Declarations.  (line 167)
+* %7bit:                                 Gperf Declarations.  (line 100)
+* %compare-lengths:                      Gperf Declarations.  (line 108)
+* %compare-strncmp:                      Gperf Declarations.  (line 120)
+* %define class-name:                    Gperf Declarations.  (line  94)
+* %define hash-function-name:            Gperf Declarations.  (line  84)
+* %define initializer-suffix:            Gperf Declarations.  (line  76)
+* %define length-table-name:             Gperf Declarations.  (line 178)
+* %define lookup-function-name:          Gperf Declarations.  (line  89)
+* %define slot-name:                     Gperf Declarations.  (line  68)
+* %define string-pool-name:              Gperf Declarations.  (line 157)
+* %define word-array-name:               Gperf Declarations.  (line 172)
 * %delimiters:                           Gperf Declarations.  (line  24)
-* %enum:                                 Gperf Declarations.  (line 124)
-* %global-table:                         Gperf Declarations.  (line 135)
+* %enum:                                 Gperf Declarations.  (line 129)
+* %global-table:                         Gperf Declarations.  (line 140)
 * %ignore-case:                          Gperf Declarations.  (line  34)
-* %includes:                             Gperf Declarations.  (line 130)
+* %includes:                             Gperf Declarations.  (line 135)
 * %language:                             Gperf Declarations.  (line  39)
-* %null-strings:                         Gperf Declarations.  (line 160)
-* %omit-struct-type:                     Gperf Declarations.  (line 192)
-* %pic:                                  Gperf Declarations.  (line 140)
-* %readonly-tables:                      Gperf Declarations.  (line 119)
+* %null-strings:                         Gperf Declarations.  (line 165)
+* %omit-struct-type:                     Gperf Declarations.  (line 197)
+* %pic:                                  Gperf Declarations.  (line 145)
+* %readonly-tables:                      Gperf Declarations.  (line 124)
 * %struct-type:                          Gperf Declarations.  (line  30)
-* %switch:                               Gperf Declarations.  (line 180)
+* %switch:                               Gperf Declarations.  (line 185)
 * %{:                                    C Code Inclusion.    (line   6)
 * %}:                                    C Code Inclusion.    (line   6)
 * Array name:                            Output Details.      (line 129)
@@ -2064,33 +2081,33 @@ Concept Index
 
 
 Tag Table:
-Node: Top1237
-Node: Copying3374
-Node: Contributors40915
-Node: Motivation42108
-Node: Search Structures43240
-Node: Description46799
-Node: Input Format48757
-Node: Declarations49902
-Node: User-supplied Struct50490
-Node: Gperf Declarations52105
-Node: C Code Inclusion60897
-Node: Keywords61740
-Node: Functions63688
-Node: Controls for GNU indent64226
-Node: Output Format65177
-Node: Binary Strings67972
-Node: Output Copyright69148
-Node: Options70087
-Node: Output File70876
-Node: Input Details71268
-Node: Output Language73107
-Node: Output Details74526
-Node: Algorithmic Details81793
-Node: Verbosity87050
-Node: Bugs87761
-Node: Projects89357
-Node: Bibliography90489
-Node: Concept Index92504
+Node: Top1267
+Node: Copying3404
+Node: Contributors40945
+Node: Motivation42376
+Node: Search Structures43512
+Node: Description47105
+Node: Input Format49063
+Node: Declarations50208
+Node: User-supplied Struct50796
+Node: Gperf Declarations52411
+Node: C Code Inclusion61424
+Node: Keywords62267
+Node: Functions64215
+Node: Controls for GNU indent64753
+Node: Output Format65704
+Node: Binary Strings68499
+Node: Output Copyright69675
+Node: Options70614
+Node: Output File71403
+Node: Input Details71795
+Node: Output Language73634
+Node: Output Details75274
+Node: Algorithmic Details82541
+Node: Verbosity87798
+Node: Bugs88509
+Node: Projects90105
+Node: Bibliography91237
+Node: Concept Index93252
 
 End Tag Table
