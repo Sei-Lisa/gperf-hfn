@@ -4,7 +4,7 @@
    Written by Douglas C. Schmidt <schmidt@ics.uci.edu>
    and Bruno Haible <bruno@clisp.org>.
 
-   This file is part of GNU GPERF.
+   This file is part of GPERF-HFN.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -23,4 +23,4 @@
 #include "version.h"
 
 /* Current release version. */
-const char *version_string = "3.1";
+const char *version_string = "3.1hfn.1";

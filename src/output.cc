@@ -1,9 +1,11 @@
 /* Output routines.
    Copyright (C) 1989-1998, 2000, 2002-2004, 2006-2007, 2009, 2011-2012, 2016 Free Software Foundation, Inc.
-   Written by Douglas C. Schmidt <schmidt@ics.uci.edu>
-   and Bruno Haible <bruno@clisp.org>.
+   Copyright (C) 2016 Sei Lisa.
+   Written by Douglas C. Schmidt <schmidt@ics.uci.edu>,
+   Bruno Haible <bruno@clisp.org>
+   and Sei Lisa.
 
-   This file is part of GNU GPERF.
+   This file is part of GPERF-HFN.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -2163,7 +2165,7 @@ Output::output ()
               "      && ('w' == 119) && ('x' == 120) && ('y' == 121) && ('z' == 122) \\\n"
               "      && ('{' == 123) && ('|' == 124) && ('}' == 125) && ('~' == 126))\n"
               "/* The character set is not based on ISO-646.  */\n");
-      printf ("%s \"gperf generated tables don't work with this execution character set. Please report a bug to <bug-gperf@gnu.org>.\"\n", option[KRC] || option[C] ? "error" : "#error");
+      printf ("%s \"gperf generated tables don't work with this execution character set. Please report a bug to <seilisasl@gmail.com>.\"\n", option[KRC] || option[C] ? "error" : "#error");
       printf ("#endif\n\n");
     }
 

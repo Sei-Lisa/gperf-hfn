@@ -1,3 +1,8 @@
+New in 3.1hfn.1:
+
+* Forked from GNU gperf 3.1 as gperf-HFN by Sei Lisa on 2016-11-24.
+* Added HFN as a "language", to output the Hash FuNction parameters alone.
+
 New in 3.1:
 * The generated C code is now in ANSI-C by default. If you want to support
   pre-ANSI-C compilers, you need to provide the option --language=C on the

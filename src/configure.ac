@@ -4,7 +4,7 @@ dnl Copyright (C) 1998, 2000, 2002-2003, 2007, 2009 Free Software Foundation, In
 dnl Written by Douglas C. Schmidt <schmidt@ics.uci.edu>
 dnl and Bruno Haible <bruno@clisp.org>.
 dnl
-dnl This file is part of GNU GPERF.
+dnl This file is part of GPERF-HFN.
 dnl
 dnl This program is free software: you can redistribute it and/or modify
 dnl it under the terms of the GNU General Public License as published by

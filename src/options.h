@@ -3,10 +3,12 @@
 /* Handles parsing the Options provided to the user.
 
    Copyright (C) 1989-1998, 2000, 2002-2004, 2011 Free Software Foundation, Inc.
-   Written by Douglas C. Schmidt <schmidt@ics.uci.edu>
-   and Bruno Haible <bruno@clisp.org>.
+   Copyright (C) 2016 Sei Lisa.
+   Written by Douglas C. Schmidt <schmidt@ics.uci.edu>,
+   Bruno Haible <bruno@clisp.org>
+   and Sei Lisa.
 
-   This file is part of GNU GPERF.
+   This file is part of GPERF-HFN.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
